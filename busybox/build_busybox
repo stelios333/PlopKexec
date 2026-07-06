@@ -8,11 +8,8 @@ tar xfj $BUSYBOX.tar.bz2 &&
 ln -fs $BUSYBOX busybox &&
 {
     arch=$(uname -m)
-    if [ "$arch" == "x86_64" ]
-    then
-	cp -av .config-m32 busybox/.config
-    else
+
 	cp -av .config busybox/.config
-    fi
+
 } &&
-cd busybox && make && make install
+cd busybox && make -j $(($(nproc) + 1)) && make install

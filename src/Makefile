@@ -6,15 +6,15 @@ OBJS 	= plpkexec.o keyboard.o vt.o run.o tools.o log.o menu.o menuentry.o edit.o
 # Add -m32 on 64bit OS
 UNAME := $(shell uname -m)
 
-ifeq ($(UNAME), x86_64)
-M = -m32
-endif
+#ifeq ($(UNAME), x86_64)
+#M = -m32
+#endif
 
 DATE := $(shell LC_ALL=C date -u)
 
 
 # Set compile flags
-CFLAGS 	= -g -c -Wunused -Wuninitialized -O2 -march=i486 $(M)
+CFLAGS 	= -g -c -Wunused -Wuninitialized -O2 -march=nocona $(M)
 LDFLAGS = -Wall -D_FILE_OFFSET_BITS=64 --static -pthread $(M)
 LINK 	= $(CC) -o
 
@@ -30,6 +30,7 @@ $(NAME):$(OBJS)
 
 built: *.cpp *.h
 	echo "#define BUILT \"$(DATE) on $(UNAME)\"" > built
+	echo "#define PROGRAM_VERSION_64" >> built
 
 
 keyboard.o: keyboard.cpp keyboard.h
