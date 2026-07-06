@@ -1,0 +1,16 @@
+#!/bin/sh
+
+
+KEXEC=kexec-tools-2.0.32
+
+echo "Building Kexec"
+
+export CFLAGS="-march=nocona -static"
+export CPPFLAGS="-march=nocona -static"
+
+
+tar xfvz $KEXEC.tar.gz &&
+cd $KEXEC &&
+./configure && make -j $(($(nproc) + 1)) &&
+cp -v build/sbin/kexec .. &&
+strip -s ../kexec

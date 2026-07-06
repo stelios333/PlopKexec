@@ -1,0 +1,8 @@
+kernel/linux-*
+iso/iso
+busybox/busybox-*
+build/*
+kexec/kexec-tools*
+src/*.o
+src/built
+src/init
