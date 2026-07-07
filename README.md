@@ -6,9 +6,13 @@ A fork of [Elmar Hanlhofer's PlopKexec](https://www.plop.at/en/plopkexec/downloa
 
 ## Directories
 busybox - BusyBox source code
+
 iso - Iso build directory
+
 kernel	- Linux kernel
+
 kexec	- Kexec source code
+
 src	- PlopKexec program source code
 
 ## Compiling

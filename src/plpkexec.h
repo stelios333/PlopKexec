@@ -21,8 +21,8 @@
  *
  */
 
-#define PROGRAM_VERSION		"1.8"
-#define PROGRAM_RELEASE_DATE	"03/11/2022"
+#define PROGRAM_VERSION		"1.8.2"
+#define PROGRAM_RELEASE_DATE	"07/07/2026"
 
 
 void ViewLog();
