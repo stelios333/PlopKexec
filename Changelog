@@ -1,3 +1,5 @@
+** Since Git version control & Github releases are used now I will not update the Changelog file**
+
 2024-02-14 Version 1.8.1 released by Elmar Hanlhofer
 
     * Fixed EFI 32 bit file name. Changed to BOOTIA32.EFI.
