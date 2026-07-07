@@ -18,6 +18,13 @@ cd src 			&&
 make -j $MAKE_JOBS &&
 cd $BASE/kernel 	&&
 {
+    if [ ! -f $KERNEL.tar.xz ]
+    then
+	echo "Downloading the Linux kernel source code" &&
+	wget https://cdn.kernel.org/pub/linux/kernel/v6.x/$KERNEL.tar.xz
+    fi
+} &&
+{
     if [ ! -d $KERNEL ]
     then
 	echo "Extracting the Linux kernel source code" &&
@@ -40,15 +47,20 @@ cd $BASE/kernel/$KERNEL &&
 make -j $MAKE_JOBS bzImage 			  &&
 cp -av arch/x86/boot/bzImage $BASE/build/plopkexec64 &&
 cd $BASE 		 &&
-cp -av build/plopkexec64 build/BOOTX64.EFI &&
-cp -av build/plopkexec64 iso/iso/plopkexec &&
-cp -av build/plopkexec64 iso/iso/EFI/BOOT/BOOTX64.EFI &&
-cd iso 			 &&
-sh make-iso.sh 		 &&
-cp -av plopkexec.iso ../build/plopkexec64.iso	 &&
-echo && 
-echo "Built successfully plopkexec64 and plopkexec64.iso" &&
-echo "Find them in the 'build/' directory."
-
+# cp -av build/plopkexec64 build/BOOTx64.EFI &&
+if [ "$1" == "iso" ]
+then
+    mkdir -p iso/iso/EFI/BOOT/ &&
+    cp -av build/plopkexec64 iso/iso/EFI/BOOT/BOOTx64.EFI &&
+    cd iso 			 &&
+    sh make-iso.sh 		 &&
+    mv -v plopkexec.iso ../build/plopkexec64.iso	 &&
+    echo && 
+    echo "Successfully built plopkexec64 and plopkexec64.iso" &&
+    echo "Find them in the 'build/' directory."
+else
+    echo "Successfully built plopkexec64" &&
+    echo "Find it in the 'build/' directory."
+fi
 
 

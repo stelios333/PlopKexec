@@ -1,6 +1,6 @@
 
 sh make-efibootimg.sh
-mkisofs -J -r -V PlopKexec \
+./mkisofs -J -r -V PlopKexec \
 	-UDF \
 	-hide-joliet-trans-tbl -hide-rr-moved  \
 	-allow-leading-dots \
