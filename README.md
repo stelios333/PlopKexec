@@ -1,7 +1,8 @@
 
 ## PlopKexec-64bit
-![screenshot](https://github.com/stelios333/PlopKexec/blob/master/screenshots/plopkexec1.jpg?raw=true)
 A fork of [Elmar Hanlhofer's PlopKexec](https://www.plop.at/en/plopkexec/download.html) linux & kexec-based Linux bootloader with an updated LTS kernel & tools without 32-bit support
+
+![screenshot](https://github.com/stelios333/PlopKexec/blob/master/screenshots/plopkexec1.jpg?raw=true)
 
 ## Directories
 busybox - BusyBox source code
