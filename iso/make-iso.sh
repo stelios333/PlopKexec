@@ -1,5 +1,8 @@
+#!/bin/sh
 
-sh make-efibootimg.sh
+echo -e "\n========= Creating bootable ISO =========" &&
+
+sh make-efibootimg.sh &&
 ./mkisofs -J -r -V PlopKexec \
 	-UDF \
 	-hide-joliet-trans-tbl -hide-rr-moved  \

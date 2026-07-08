@@ -6,8 +6,8 @@ MAKE_JOBS=$(($(nproc) + 1))
 if [ $(id -u) -ne 0 ]
 then
 
-    echo Building PlopKexec needs root permissions or fakeroot!
-    exit 0
+    echo Building PlopKexec needs root privileges or fakeroot!
+    exit 1
     
 fi
 
@@ -15,6 +15,7 @@ BASE=$(pwd)
 
 mkdir -p build		&&
 cd src 			&&
+echo "========= Building PlopKexec =========" &&
 make -j $MAKE_JOBS &&
 cd $BASE/kernel 	&&
 {
@@ -44,10 +45,11 @@ cd $BASE/kexec 		 &&
 sh build_kexec &&
 cp -av kexec $BASE/kernel/$KERNEL/initramfs &&
 cd $BASE/kernel/$KERNEL &&
+echo -e "\n========= Compiling kernel =========" &&
 make -j $MAKE_JOBS bzImage 			  &&
 cp -av arch/x86/boot/bzImage $BASE/build/plopkexec64 &&
 cd $BASE 		 &&
-# cp -av build/plopkexec64 build/BOOTx64.EFI &&
+cp -av build/plopkexec64 build/BOOTx64.EFI &&
 if [ "$1" == "iso" ]
 then
     mkdir -p iso/iso/EFI/BOOT/ &&
@@ -56,10 +58,10 @@ then
     sh make-iso.sh 		 &&
     mv -v plopkexec.iso ../build/plopkexec64.iso	 &&
     echo && 
-    echo "Successfully built plopkexec64 and plopkexec64.iso" &&
+    echo -e "\033[1mSuccessfully built plopkexec64 and plopkexec64.iso\033[0m" &&
     echo "Find them in the 'build/' directory."
 else
-    echo "Successfully built plopkexec64" &&
+    echo -e "\033[1mSuccessfully built plopkexec64\033[0m" &&
     echo "Find it in the 'build/' directory."
 fi
 

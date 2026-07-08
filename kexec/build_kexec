@@ -3,7 +3,7 @@
 
 KEXEC=kexec-tools-2.0.32
 
-echo "Building Kexec"
+echo -e "\n========= Building Kexec =========" 
 
 export CFLAGS="-march=nocona -static"
 export CPPFLAGS="-march=nocona -static"

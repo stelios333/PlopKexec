@@ -2,7 +2,8 @@
 
 BUSYBOX=busybox-1.38.0
 
-echo Building BusyBox
+echo -e "\n========= Building BusyBox =========" 
+
 
 tar xfj $BUSYBOX.tar.bz2 &&
 ln -fs $BUSYBOX busybox &&

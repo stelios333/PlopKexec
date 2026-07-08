@@ -1,6 +1,6 @@
 
-## PlopKexec-64bit
-A fork of [Elmar Hanlhofer's PlopKexec](https://www.plop.at/en/plopkexec/download.html) linux & kexec-based Linux bootloader with an updated LTS kernel & tools without 32-bit support
+## PlopKexec-64
+A fork of [Elmar Hanlhofer's PlopKexec](https://www.plop.at/en/plopkexec/download.html) kexec-based Linux bootloader with an updated LTS kernel & tools, with 32-bit support removed
 
 ![screenshot](https://github.com/stelios333/PlopKexec/blob/master/screenshots/plopkexec1.jpg?raw=true)
 
@@ -21,7 +21,7 @@ First you will need to install the required build tools for the Linux kernel, ke
 sudo apt install bc binutils bison dwarves flex gcc git gnupg2 gzip libelf-dev libncurses5-dev libssl-dev make openssl pahole perl-base rsync tar xz-utils glibc-static
 ```` 
 
-If you intend to create a bootable iso you will also need to install `syslinux-utils`
+If you intend to create a bootable iso you will also need to install `syslinux-utils` and `mtools`
 If you are not using a debian-based distro ask an LLM what the equivalent packages are for your distro.
 
 To build just the kernel run: `sh build.sh`
@@ -93,4 +93,4 @@ LABEL debiannosplash
 
 
 
-[Link to original documentation](https://www.plop.at/en/plopkexec/full.html)
+[Original documentation](https://www.plop.at/en/plopkexec/full.html)
